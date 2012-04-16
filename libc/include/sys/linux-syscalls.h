@@ -195,6 +195,7 @@
 #define __NR_getcpu                       (__NR_SYSCALL_BASE + 345)
 #define __NR_ioprio_set                   (__NR_SYSCALL_BASE + 314)
 #define __NR_ioprio_get                   (__NR_SYSCALL_BASE + 315)
+#define __NR_unshare                      (__NR_SYSCALL_BASE + 337)
 #define __NR_epoll_create                 (__NR_SYSCALL_BASE + 250)
 #define __NR_epoll_ctl                    (__NR_SYSCALL_BASE + 251)
 #define __NR_epoll_wait                   (__NR_SYSCALL_BASE + 252)
@@ -241,6 +242,7 @@
 #define __NR_getcpu                       (__NR_SYSCALL_BASE + 318)
 #define __NR_ioprio_set                   (__NR_SYSCALL_BASE + 289)
 #define __NR_ioprio_get                   (__NR_SYSCALL_BASE + 290)
+#define __NR_unshare                      (__NR_SYSCALL_BASE + 310)
 #define __NR_epoll_create                 (__NR_SYSCALL_BASE + 254)
 #define __NR_epoll_ctl                    (__NR_SYSCALL_BASE + 255)
 #define __NR_epoll_wait                   (__NR_SYSCALL_BASE + 256)
@@ -308,6 +310,7 @@
 #define __NR_inotify_add_watch            (__NR_SYSCALL_BASE + 291)
 #define __NR_inotify_rm_watch             (__NR_SYSCALL_BASE + 292)
 #define __NR_eventfd2                     (__NR_SYSCALL_BASE + 328)
+#define __NR_unshare                      (__NR_SYSCALL_BASE + 310)
 #endif
 
 #endif
