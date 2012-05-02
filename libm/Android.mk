@@ -152,6 +152,7 @@ libm_common_src_files:= \
 	src/s_isnan.c \
 	src/s_modf.c
 
+libm_common_cflags :=
 
 ifeq ($(TARGET_ARCH),arm)
   libm_common_src_files += \
@@ -162,10 +163,10 @@ ifeq ($(TARGET_ARCH),arm)
 	src/s_scalbnf.c
 
   libm_common_includes = $(LOCAL_PATH)/arm
+endif
 
-else
-  ifeq ($(TARGET_OS)-$(TARGET_ARCH),linux-x86)
-    libm_common_src_files += \
+ifeq ($(TARGET_OS)-$(TARGET_ARCH),linux-x86)
+  libm_common_src_files += \
 	i387/fenv.c \
 	i387/s_scalbnl.S \
 	i387/s_scalbn.S \
@@ -186,7 +187,18 @@ else
     endif
   endif
 endif
+ifeq ($(TARGET_ARCH),mips)
+  libm_common_src_files += \
+	mips/fenv.c \
+	src/e_ldexpf.c \
+	src/s_scalbln.c \
+	src/s_scalbn.c \
+	src/s_scalbnf.c
 
+  libm_common_includes = $(LOCAL_PATH)/mips
+  # Need to build *rint* functions
+  libm_common_cflags += -fno-builtin-rintf -fno-builtin-rint
+endif
 
 # libm.a
 # ========================================================
@@ -198,6 +210,7 @@ LOCAL_SRC_FILES := \
 
 LOCAL_ARM_MODE := arm
 LOCAL_C_INCLUDES += $(libm_common_includes)
+LOCAL_CFLAGS := $(libm_common_cflags)
 
 LOCAL_MODULE:= libm
 
@@ -216,6 +229,7 @@ LOCAL_SRC_FILES := \
 LOCAL_ARM_MODE := arm
 
 LOCAL_C_INCLUDES += $(libm_common_includes)
+LOCAL_CFLAGS := $(libm_common_cflags)
 
 LOCAL_MODULE:= libm
 
